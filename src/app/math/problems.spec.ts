@@ -4,7 +4,7 @@ const key = (p: Problem) => `${p.a}${p.op}${p.b}`;
 const level = (id: string) => findLevel(id)!;
 
 describe('問題の範囲', () => {
-  it('くりあがらない たしざん: 1けた + 1けた で、こたえが 9 いか', () => {
+  it('たしざん１（くりあがらない）: 1けた + 1けた で、こたえが 9 いか', () => {
     const all = level('add').all();
     expect(all.length).toBe(36);
     for (const p of all) {
@@ -28,7 +28,7 @@ describe('問題の範囲', () => {
     }
   });
 
-  it('くりあがりの ある たしざん: 1けた + 1けた で、こたえが 10 いじょう', () => {
+  it('たしざん２（くりあがり あり）: 1けた + 1けた で、こたえが 10 いじょう', () => {
     const all = level('carry').all();
     expect(all.length).toBe(45);
     for (const p of all) {
@@ -37,6 +37,16 @@ describe('問題の範囲', () => {
       expect(p.b).toBeLessThanOrEqual(9);
       expect(p.answer).toBeGreaterThanOrEqual(10);
     }
+  });
+});
+
+describe('メニューの名前', () => {
+  it('ならびと 名前が たしざん１・ひきざん・たしざん２', () => {
+    expect(LEVELS.map((l) => [l.id, l.title])).toEqual([
+      ['add', 'たしざん１'],
+      ['sub', 'ひきざん'],
+      ['carry', 'たしざん２'],
+    ]);
   });
 });
 

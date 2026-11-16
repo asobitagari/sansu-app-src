@@ -36,7 +36,7 @@ function pairs(make: (a: number, b: number) => Problem, keep: (p: Problem) => bo
 export const LEVELS: Level[] = [
   {
     id: 'add',
-    title: 'くりあがらない たしざん',
+    title: 'たしざん１',
     example: '3 + 4',
     all: () => pairs(add, (p) => p.answer <= 9),
   },
@@ -48,7 +48,7 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'carry',
-    title: 'くりあがりの ある たしざん',
+    title: 'たしざん２',
     example: '7 + 6',
     all: () => pairs(add, (p) => p.answer >= 10),
   },
