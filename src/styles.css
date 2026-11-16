@@ -1,0 +1,111 @@
+:root {
+  color-scheme: light;
+  --bg: #f6f8fc;
+  --surface: #ffffff;
+  --text: #1f2a37;
+  --muted: #5f6b7a;
+  --line: #d5dce6;
+  --chip: #eef1f6;
+  --accent: #2f80ed;
+  --accent-dark: #1d5fbf;
+  --accent-text: #1d5fbf;
+  --add: #e8573f;
+  --sub: #2f80ed;
+  --carry: #8e5bd8;
+  --ok-fill: #1e8a52;
+  --ng-fill: #d03535;
+  --ok: #1e9a5a;
+  --ng: #d93a3a;
+  --star: #ffc531;
+  --radius: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #141922;
+    --surface: #1f2632;
+    --text: #eef2f7;
+    --muted: #a4afbd;
+    --line: #3a4556;
+    --chip: #2a3342;
+    --accent-text: #7fb2ff;
+    --ok: #3fc47e;
+    --ng: #ff6b6b;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'BIZ UDPGothic', 'BIZ UDゴシック', 'Hiragino Maru Gothic ProN', 'Hiragino Sans',
+    'Noto Sans JP', 'Yu Gothic', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 52px;
+  margin-bottom: 12px;
+}
+
+.back {
+  flex: none;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--chip);
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 56px;
+  padding: 0 28px;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.primary {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn.wide {
+  min-width: 60%;
+}
+
+:focus-visible {
+  outline: 3px solid var(--star);
+  outline-offset: 2px;
+}

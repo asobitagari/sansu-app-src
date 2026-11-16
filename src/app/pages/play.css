@@ -1,0 +1,102 @@
+.play {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+.level-name {
+  flex: 1;
+  margin: 0;
+  font-weight: 700;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.progress {
+  margin: 0;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.question {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: 16px 0;
+}
+.formula {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0;
+  font-size: clamp(3rem, 15vw, 5.5rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+.op { color: var(--muted); }
+.answer-box {
+  min-width: 1.6em;
+  padding: 0 0.15em;
+  border-bottom: 6px solid var(--accent);
+  text-align: center;
+  color: var(--accent-text);
+}
+.answer-box.hidden { color: var(--line); }
+
+.actions {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  padding: 8px 0 24px;
+  min-height: 150px;
+  align-content: start;
+}
+.actions.row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  min-height: 0;
+}
+.btn.wide { min-height: 72px; font-size: 1.5rem; }
+
+.ask {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+.judge {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  max-width: 480px;
+}
+.judge-btn {
+  min-height: 72px;
+  padding: 0 8px;
+  font-size: clamp(1.1rem, 5vw, 1.3rem);
+  white-space: nowrap;
+  color: #fff;
+}
+.judge-btn.ok { background: var(--ok-fill); border-color: var(--ok-fill); }
+.judge-btn.ng { background: var(--ng-fill); border-color: var(--ng-fill); }
+.mark { font-size: 1.3em; margin-right: 0.15em; }
+
+.summary { text-align: center; padding-top: 24px; }
+.summary h2 { margin: 0 0 8px; font-size: 2rem; }
+.score { margin: 0 0 8px; font-size: 1.3rem; }
+.score strong { font-size: 2.2rem; color: var(--accent-text); }
+.review {
+  margin: 16px 0;
+  padding: 12px 16px;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: left;
+}
+.review h3 { margin: 0 0 8px; font-size: 1.1rem; color: var(--ng); }
+.review ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.review li { font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.review strong { color: var(--ok); }

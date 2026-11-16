@@ -1,0 +1,66 @@
+@if (level(); as lv) {
+  <main class="page play">
+    <header class="bar">
+      <a class="back" routerLink="/" aria-label="やめて メニューへ もどる">‹ メニュー</a>
+      <p class="level-name">{{ lv.title }}</p>
+      @if (!finished()) {
+        <p class="progress" aria-live="polite">{{ index() + 1 }} / {{ problems().length }}</p>
+      }
+    </header>
+
+    @if (!finished()) {
+      @if (current(); as p) {
+        <section class="question" aria-live="polite">
+          <p class="formula">
+            <span>{{ p.a }}</span>
+            <span class="op">{{ opLabel[p.op] }}</span>
+            <span>{{ p.b }}</span>
+            <span class="op">=</span>
+            <span class="answer-box" [class.hidden]="!revealed()">{{ revealed() ? p.answer : '?' }}</span>
+          </p>
+        </section>
+
+        <div class="actions">
+          @if (!revealed()) {
+            <button type="button" class="btn primary wide" (click)="reveal()">こたえを みる</button>
+          } @else {
+            <p class="ask">あってたかな？</p>
+            <div class="judge">
+              <button type="button" class="btn judge-btn ok" (click)="mark(true)">
+                <span class="mark" aria-hidden="true">○</span> あってた
+              </button>
+              <button type="button" class="btn judge-btn ng" (click)="mark(false)">
+                <span class="mark" aria-hidden="true">×</span> まちがってた
+              </button>
+            </div>
+          }
+        </div>
+      }
+    } @else {
+      <section class="summary">
+        <h2>{{ message() }}</h2>
+        <p class="score">
+          {{ problems().length }}もん ちゅう <strong>{{ correctCount() }}</strong>もん あってた
+        </p>
+
+        @if (mistakes().length > 0) {
+          <div class="review">
+            <h3>まちがえた もんだい</h3>
+            <ul>
+              @for (m of mistakes(); track $index) {
+                <li>
+                  {{ m.a }} {{ opLabel[m.op] }} {{ m.b }} = <strong>{{ m.answer }}</strong>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+
+        <div class="actions row">
+          <button type="button" class="btn primary" (click)="start()">もういちど</button>
+          <a class="btn" routerLink="/">メニューへ</a>
+        </div>
+      </section>
+    }
+  </main>
+}
