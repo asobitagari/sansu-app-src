@@ -30,7 +30,7 @@
   align-items: center;
   gap: 0.35em;
   margin: 0;
-  font-size: clamp(3rem, 15vw, 5.5rem);
+  font-size: clamp(2.6rem, 13vw, 5.5rem);
   font-weight: 800;
   font-variant-numeric: tabular-nums;
 }

@@ -42,7 +42,7 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'sub',
-    title: 'ひきざん',
+    title: 'ひきざん１',
     example: '8 − 5',
     all: () => pairs(sub, (p) => p.answer >= 0),
   },
@@ -52,13 +52,20 @@ export const LEVELS: Level[] = [
     example: '7 + 6',
     all: () => pairs(add, (p) => p.answer >= 10),
   },
+  {
+    id: 'sub10',
+    title: 'ひきざん２',
+    example: '10 − 3',
+    // 10 − 1 〜 10 − 9 の 9 通り。1 回分は 9 問になる（makeRound は数が足りなければ全部を返す）
+    all: () => Array.from({ length: 9 }, (_, i) => sub(10, i + 1)),
+  },
 ];
 
 export function findLevel(id: string): Level | undefined {
   return LEVELS.find((l) => l.id === id);
 }
 
-/** 1 回分の問題を作る。同じ問題は出さない。 */
+/** 1 回分の問題を作る。同じ問題は出さない。出せる問題が count より少なければ、その全部を出す。 */
 export function makeRound(level: Level, count = 10, rand: Rand = Math.random): Problem[] {
   const pool = level.all();
   // フィッシャー–イェーツで先頭 count 個だけ混ぜる

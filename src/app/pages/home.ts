@@ -86,6 +86,7 @@ import { LEVELS } from '../math/problems';
     .add { background: var(--add); }
     .sub { background: var(--sub); }
     .carry { background: var(--carry); }
+    .sub10 { background: var(--sub10); }
   `,
 })
 export class Home {

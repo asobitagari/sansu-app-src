@@ -64,6 +64,17 @@ describe('Play', () => {
     expect(el(f).querySelector('.progress')?.textContent).toContain('1 / 10');
   });
 
+  it('ひきざん２ は 9もん で おわる', () => {
+    const f = setup('sub10');
+    expect(el(f).querySelector('.progress')?.textContent).toContain('1 / 9');
+    for (let i = 0; i < 9; i++) {
+      expect(el(f).querySelector('.formula')!.textContent!.replace(/\s+/g, '')).toMatch(/^10−[1-9]=\?$/);
+      click(f, 'こたえを みる');
+      click(f, i === 0 ? 'まちがってた' : 'あってた');
+    }
+    expect(text(f)).toContain('9もん ちゅう 8もん あってた');
+  });
+
   it('ぜんぶ あってたら まちがえた もんだいの いちらんは でない', () => {
     const f = setup('carry');
     for (let i = 0; i < 10; i++) {
